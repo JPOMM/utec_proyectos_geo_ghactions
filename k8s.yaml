@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utec_proyectos_geo_ghactions
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: utec_proyectos_geo_ghactions
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: utec_proyectos_geo_ghactions
+    spec:
+      containers:
+        - name: utec_proyectos_geo_ghactions
+          image: 654654589924.dkr.ecr.sa-east-1.amazonaws.com/springboot-eks:<IMAGE_TAG>
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: utec_proyectos_geo_ghactions-service
+spec:
+  selector:
+    app: utec_proyectos_geo_ghactions
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
