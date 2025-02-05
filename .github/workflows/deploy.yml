@@ -68,4 +68,4 @@ jobs:
         run: |
           sed -i "s|<IMAGE_TAG>|$IMAGE_TAG|g" k8s.yaml
           kubectl apply -f k8s.yaml
-          kubectl rollout restart deployment/utec_proyectos_geo_ghactions
+          kubectl rollout restart deployment/utec-proyectos-geo-ghactions
