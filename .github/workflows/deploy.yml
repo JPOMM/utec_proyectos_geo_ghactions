@@ -59,7 +59,7 @@ jobs:
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --region sa-east-1 --name eg-test-eks-jpomm-utec-cluster
+          aws eks update-kubeconfig --region eu-north-1 --name eg-g01-eks-grupo01-utec-b-cluster
 
       # Despliegue en EKS
       - name: Deploy to EKS
@@ -68,4 +68,4 @@ jobs:
         run: |
           sed -i "s|<IMAGE_TAG>|$IMAGE_TAG|g" k8s.yaml
           kubectl apply -f k8s.yaml
-          kubectl rollout restart deployment/myapp
+          kubectl rollout restart deployment/utec_proyectos_geo_ghactions
